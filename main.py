@@ -40,6 +40,42 @@ def binary_search(arr: list, target: int):
     return -1
 
 
+def selection_sort(arr: list):
+    """
+    Selection sort algorithm sorts an array by repeatedly selecting the smallest element from the array and placing it
+    in the correct order.
+    The average, best and worst time complexity is O(n2)
+    :param arr: the array that needs sorting
+    :return: the sorted array
+    """
+    size = len(arr)
+    for i in range(size):
+        min_indx = i
+        for j in range(i+1, size):
+            if arr[j] < arr[min_indx]:
+                min_indx = j
+        aux = arr[i]
+        arr[i] = arr[min_indx]
+        arr[min_indx] = aux
+    return arr
+
+def bubble_sort(arr: list):
+   size = len(arr)
+   for i in range(size - 1):
+       for j in range(0, size - i - 1):
+           if arr[j] > arr[j+1]:
+               aux = arr[j]
+               arr[j] = arr[j+1]
+               arr[j+1] = aux
+   return arr
+
+
+def quick_sort(arr: list, low: int, high: int):
+    pass
+
+
+
+
 def main():
     arr = [10, -4, 5, 6, 23, 400]
     target = 23
@@ -57,6 +93,22 @@ def main():
         print("We couldn't find " + str(target) + "in the array")
     else:
         print(str(target) + " can be found at the " + str(binary_returned_value) + " position in the array.")
+
+    print("Selection Sort: ")
+    arr_unsorted = [65, -3, 45, 0.7, 7, 12233]
+    print("The unsorted array: ")
+    print(arr_unsorted)
+    arr_sorted = selection_sort(arr_unsorted)
+    print("The sorted array: ")
+    print(arr_sorted)
+
+    print("Bubble Sort: ")
+    arr_unsorted = [65, -3, 45, 0.7, 7, 12233]
+    print("The unsorted array: ")
+    print(arr_unsorted)
+    arr_sorted = bubble_sort(arr_unsorted)
+    print("The sorted array: ")
+    print(arr_sorted)
 
 
 if __name__ == "__main__":
